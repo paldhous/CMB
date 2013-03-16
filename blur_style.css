@@ -3,7 +3,7 @@ body{
     padding:0; 
     height: 100%;
     width: 100%;
-/*    overflow: hidden;*/
+    overflow: hidden;
 }
 
 
@@ -16,6 +16,12 @@ body{
 }
 
 #title{
+    fill: black;
+    font-family: sans-serif;
+    text-anchor: middle;
+}
+
+#label{
     fill: black;
     font-family: sans-serif;
     text-anchor: middle;

@@ -13,8 +13,14 @@ var W = d3.select("body").property("offsetWidth");
 
 var title_x = W/2, title_y = H/12, title_font_size = Math.min(W, H)/16;
 
-var map_scale = 2000;
-var max_map_width = W/1.5, max_map_height = H/1.5;
+var map_scale = 20000;
+var max_map_width = W/1.2, max_map_height = H/1.2;
+
+// Resolutions of various experiments, in degrees.
+// Please check Planck before going to press.
+var cobe_res = 7, wmap_res = 0.5, planck_res = 0.1;
+
+label_x = W/2, label_y = 19*H/20, label_size = Math.min(W, H)/20;
 
 ///////////////////////
 // GLOBAL FUNCTIONS //
@@ -93,7 +99,7 @@ function ready_function(error, world) {
                     // NB: stdDeviation can take two parameters:
                     // the first is sigma_x and the second is sigma_y;
                     // both are in pixels.
-                    .attr("stdDeviation", "0.0, 0.0");
+                    .attr("stdDeviation", "0");
     
     // Setting up the border for the world map.
     var border = g.append("path")
@@ -126,21 +132,62 @@ function ready_function(error, world) {
     var map_ratio = map_width/map_height/2;
     console.log(map_ratio);
     
-    // Stretch or shrink the map to fit the screen.
+    // Stretch or shrink the container holding the map to fit the screen.
     var scaling_factor = Math.min(max_map_width/map_width, max_map_height/map_height);
     g.attr("transform", "translate(" + W/2 + "," + H/2 + ")scale(" + scaling_factor +")");
     border.attr("stroke-width", 1/scaling_factor);
     
     
     // Transitioning the values of the Gaussian blur filter over the map.
+    var degree = map_width/360;
     filter.transition()
         .ease("linear")
-        .delay(1000)
-        .duration(10000)
-        .attr("stdDeviation", "1000.0, 1000.0")
-        .transition()
-        .ease("linear")
-        .duration(10000)
-        .attr("stdDeviation", "0.0, 0.0");
+        .delay(3000)
+        .duration(5000)
+        .attr("stdDeviation", cobe_res*degree)
+        .each("end", function(){
+            svg.append("text")
+                .text("Resolution of COBE")
+                .attr("id", "label")
+                .attr("x", label_x)
+                .attr("y", label_y)
+                .attr("font-size", label_size);
+            
+            d3.select(this).transition()
+                .delay(3000)
+                .ease("linear")
+                .duration(5000)
+                .each("start", function(){
+                    svg.selectAll("#label")
+                        .remove();
+                })
+                .attr("stdDeviation", wmap_res*degree)
+                .each("end", function(){
+                    svg.append("text")
+                        .text("Resolution of WMAP")
+                        .attr("id", "label")
+                        .attr("x", label_x)
+                        .attr("y", label_y)
+                        .attr("font-size", label_size);
+                     
+                    d3.select(this).transition()
+                            .delay(3000)
+                            .ease("linear")
+                            .duration(5000)
+                            .each("start", function(){
+                                svg.selectAll("#label")
+                                    .remove();
+                            })
+                            .attr("stdDeviation", planck_res*degree)
+                            .each("end", function(){
+                                svg.append("text")
+                                    .text("Resolution of Planck")
+                                    .attr("id", "label")
+                                    .attr("x", label_x)
+                                    .attr("y", label_y)
+                                    .attr("font-size", label_size);
+                                })
+                })
+            });
         
 };
