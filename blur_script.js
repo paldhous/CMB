@@ -13,6 +13,9 @@ var W = d3.select("body").property("offsetWidth");
 
 var title_x = W/2, title_y = H/12, title_font_size = Math.min(W, H)/16;
 
+var map_scale = 2000;
+var max_map_width = W/1.5, max_map_height = H/1.5;
+
 ///////////////////////
 // GLOBAL FUNCTIONS //
 //////////////////////
@@ -66,46 +69,75 @@ d3.json("world-50m.json", ready_function);
 
 function ready_function(error, world) {
     
+    // Setting up a group to contain the map stuff.
+    var g = svg.append("g")
+                // .attr("transform", "translate(" + W/2 + "," + H/2 + ")")
+    
+    // Get the land information out of the world map TopoJSON object.
     var world = topojson.object(world, world.objects.land);
     
+    // Specify the projection.
     var world_projection = d3.geo.mollweide()
-                                .scale(200)
-                                .translate([W/2, H/2])
-                                .precision(0.1);
+                                // .scale(map_scale)
+                                .translate([0, 0])
+                                .scale(map_scale);
     
+    // Create a path.
     var world_path = d3.geo.path().projection(world_projection);
     
+    // Specify the Gaussian blur parameters.
     var filter = svg.append("defs")
                     .append("filter")
                     .attr("id", "blur")
                     .append("feGaussianBlur")
+                    // NB: stdDeviation can take two parameters:
+                    // the first is sigma_x and the second is sigma_y;
+                    // both are in pixels.
                     .attr("stdDeviation", "0.0, 0.0");
     
-    svg.append("path")
-        .datum({type: "Sphere"})
-        .attr("d", world_path)
-        .attr("stroke-width", 1)
-        .attr("stroke", "black")
-        .attr("fill", "none");
+    // Setting up the border for the world map.
+    var border = g.append("path")
+                    .datum({type: "Sphere"})    // This line is a trick I stole from Mike Bostock.
+                    .attr("d", world_path)
+                    .attr("stroke-width", 1)
+                    .attr("stroke", "black")
+                    .attr("fill", "none");
     
-    svg.append("clipPath")
+    // Setting the border as a clipping path for the actual map -- we don't want the blur to spill over the boundaries.
+    g.append("clipPath")
         .attr("id", "edge-of-the-world")
         .append("path")
             .datum({type: "Sphere"})
             .attr("d", world_path);
     
-    svg.append("path")
+    // Plot the actual map!
+    g.append("path")
         .datum(world)
         .attr("d", world_path)
         .attr("class", "land")
         .attr("clip-path", "url(#edge-of-the-world)")
         .attr("filter", "url(#blur)");
     
+    // Find the width and height of the map.
+    var map_boundingbox = world_path.bounds(world);
+    var map_width = (map_boundingbox[1][0] - map_boundingbox[0][0]);
+    var map_height = (map_boundingbox[1][1] - map_boundingbox[0][1]);
+    // A map of the world should be about half as high as it is wide, at least in most standard projections.
+    var map_ratio = map_width/map_height/2;
+    console.log(map_ratio);
+    
+    // Stretch or shrink the map to fit the screen.
+    var scaling_factor = Math.min(max_map_width/map_width, max_map_height/map_height);
+    g.attr("transform", "translate(" + W/2 + "," + H/2 + ")scale(" + scaling_factor +")");
+    border.attr("stroke-width", 1/scaling_factor);
+    
+    
+    // Transitioning the values of the Gaussian blur filter over the map.
     filter.transition()
         .ease("linear")
         .delay(1000)
         .duration(10000)
-        .attr("stdDeviation", "100.0, 100.0")
+        .attr("stdDeviation", "1000.0, 1000.0")
         .transition()
         .ease("linear")
         .duration(10000)
