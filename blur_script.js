@@ -47,15 +47,6 @@ svg.append("text")
 // Loading the TopoJSON files we need. //
 /////////////////////////////////////////
 
-// // We've got to load the JSON files before we do anything else,
-// // because d3.json is asynchronous.
-// // That's also why we need to use Bostock's queue library, or something like it.
-// queue()
-//     .defer(d3.json, "us.json")
-//     .defer(d3.json, "topo_districts.json")
-//     .defer(d3.csv, "2012_data.csv")
-//     .await(ready_function);                 // run ready_function AFTER the TopoJSON files and the CSV file are all loaded.
-
 d3.json("world-50m.json", ready_function);
 
 //////////////////////////////////
@@ -77,14 +68,12 @@ function ready_function(error, world) {
     
     // Setting up a group to contain the map stuff.
     var g = svg.append("g")
-                // .attr("transform", "translate(" + W/2 + "," + H/2 + ")")
     
     // Get the land information out of the world map TopoJSON object.
     var world = topojson.object(world, world.objects.land);
     
     // Specify the projection.
     var world_projection = d3.geo.mollweide()
-                                // .scale(map_scale)
                                 .translate([0, 0])
                                 .scale(map_scale);
     
@@ -143,7 +132,7 @@ function ready_function(error, world) {
     filter.transition()
         .ease("linear")
         .delay(3000)
-        .duration(5000)
+        .duration(1000)
         .attr("stdDeviation", cobe_res*degree)
         .each("end", function(){
             svg.append("text")
@@ -156,7 +145,7 @@ function ready_function(error, world) {
             d3.select(this).transition()
                 .delay(3000)
                 .ease("linear")
-                .duration(5000)
+                .duration(1000)
                 .each("start", function(){
                     svg.selectAll("#label")
                         .remove();
@@ -173,7 +162,7 @@ function ready_function(error, world) {
                     d3.select(this).transition()
                             .delay(3000)
                             .ease("linear")
-                            .duration(5000)
+                            .duration(1000)
                             .each("start", function(){
                                 svg.selectAll("#label")
                                     .remove();
