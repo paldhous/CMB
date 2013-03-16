@@ -8,10 +8,10 @@
 // Find the height and width of the current window.
 // Note that this will not rescale if you change the window size while on the page,
 // but I find it hard to care too much about that.
-var H = d3.select("body").property("offsetHeight");
-var W = d3.select("body").property("offsetWidth");
+var H = window.innerHeight;
+var W = window.innerWidth;
 
-var title_x = W/2, title_y = H/12, title_font_size = Math.min(W, H)/16;
+var title_x = W/2, title_y = H/15, title_font_size = Math.min(W, H)/16;
 
 var map_scale = 20000;
 var max_map_width = W/1.2, max_map_height = H/1.2;
