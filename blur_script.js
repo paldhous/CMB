@@ -147,7 +147,7 @@ function ready_function(error, world) {
         .attr("stdDeviation", cobe_res*degree)
         .each("end", function(){
             svg.append("text")
-                .text("Resolution of COBE")
+                .text("Resolution of COBE (1992)")
                 .attr("id", "label")
                 .attr("x", label_x)
                 .attr("y", label_y)
@@ -164,7 +164,7 @@ function ready_function(error, world) {
                 .attr("stdDeviation", wmap_res*degree)
                 .each("end", function(){
                     svg.append("text")
-                        .text("Resolution of WMAP")
+                        .text("Resolution of WMAP (2003)")
                         .attr("id", "label")
                         .attr("x", label_x)
                         .attr("y", label_y)
@@ -181,7 +181,7 @@ function ready_function(error, world) {
                             .attr("stdDeviation", planck_res*degree)
                             .each("end", function(){
                                 svg.append("text")
-                                    .text("Resolution of Planck")
+                                    .text("Resolution of Planck (2013)")
                                     .attr("id", "label")
                                     .attr("x", label_x)
                                     .attr("y", label_y)
