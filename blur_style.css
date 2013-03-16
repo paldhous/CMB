@@ -14,3 +14,9 @@ body{
     stroke-linejoin: round;
     fill: black;
 }
+
+#title{
+    fill: black;
+    font-family: sans-serif;
+    text-anchor: middle;
+}
