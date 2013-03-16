@@ -1,0 +1,16 @@
+body{ 
+    margin:0; 
+    padding:0; 
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.land{
+    opacity: 1;
+/*    stroke: white;
+    stroke-width: 1;*/
+    stroke-linejoin: round;
+    fill: black;
+}
