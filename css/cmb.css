@@ -46,6 +46,8 @@ body  {
 /* Prevents slides from flashing */
 #slides {
   display:none;
+  margin:50px auto;
+  z-index:-1;
 }
 
 
