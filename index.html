@@ -10,50 +10,10 @@
     <link href="css/cmb.css" rel="stylesheet" type="text/css" />
   
     <title>Cosmic microwave background | New Scientist</title>
-	
-	<style>
-    /* Prevents slides from flashing */
-    #slides {
-      display:none;
-    }
-  	</style>
 
   	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
   	<script src="jquery.slides.min.js"></script>
-
-  	<script>
-    $(function(){
-      $("#slides").slidesjs({
-        width: 8192,
-        height: 4096,
-		pagination: {
-	      active: true,
-	        // [boolean] Create pagination items.
-	        // You cannot use your own pagination. Sorry.
-	      effect: "fade"
-	        // [string] Can be either "slide" or "fade".
-	    },
-		navigation: {
-	      active: true,
-	        // [boolean] Generates next and previous buttons.
-	        // You can set to false and use your own buttons.
-	        // User defined buttons must have the following:
-	        // previous button: class="slidesjs-previous slidesjs-navigation"
-	        // next button: class="slidesjs-next slidesjs-navigation"
-	      effect: "fade"
-	        // [string] Can be either "slide" or "fade".
-	    },
-		effect: {
-	      fade: {
-	        speed: 500,
-	          // [number] Speed in milliseconds of the fade animation.
-	        crossfade: true
-	          // [boolean] Cross-fade the transition.
-	      }
-		}
-      });
-    });	
-  	</script>
+  	<script src="CMB_slideshow.js"></script>
 </head>
 
 <body>

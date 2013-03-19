@@ -20,7 +20,7 @@ body  {
     color: #ffffff;
     height: 50px;
     width: 100%;
-    top: 0px;
+    top: 0px;  /* I put this here. -- AMB */
 } 
 
 #header img {
@@ -42,3 +42,10 @@ body  {
     height: 100%;
     z-index:-1;
 }
+
+/* Prevents slides from flashing */
+#slides {
+  display:none;
+}
+
+
