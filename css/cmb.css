@@ -47,7 +47,8 @@ body  {
 #content {
     position: relative;
     top: 60px;
-    padding: 0px 50px;
+/*    padding: 0px 50px;*/
+    padding: 0px 3.5%;
 }
 
 /* Prevents slides from flashing */
@@ -67,14 +68,14 @@ body  {
 
 .slidesjs-next{
     position: absolute;
-    right: 50px;
+    right: 3.5%;
 }
 
 .slidesjs-navigation:link, a.slidesjs-navigation:visited, a.slidesjs-navigation:hover, a.slidesjs-navigation:active {color:black;}
 
 
 .slidesjs-previous{
-/*    left: 3%;*/
+    left: 3.5%;
 }
 
 .caption{
@@ -82,6 +83,7 @@ body  {
 }
 
 .arrow-text{
-    font-size: 16px; 
+    font-size: 14px;
+    font-style: none; 
     vertical-align: 2px;
 }
