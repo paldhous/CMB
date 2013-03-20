@@ -71,9 +71,17 @@ $("document").ready(function(){
     // });
     
     $(".slide > img")   // Select the buttons!
-        .css("width", "100%");
+        .css("position", "relative")
+        .css("width", "100%")
+        .css("margin-left", "auto")
+        .css("margin-right", "auto");
     
     $(".slide > p")   // Select the captions!
+        .css("position", "relative")
+        .css("width", "98%")
+        .css("margin-left", "auto")
+        .css("margin-right", "auto")
+        .css("position", "absolute")
         .addClass("caption");
     
 });

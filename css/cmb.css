@@ -10,9 +10,9 @@ body  {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
     padding: 0px;
-    font-size: 16px;
+    font-size: 14px;
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 #header {
@@ -59,10 +59,10 @@ body  {
 
 .slidesjs-navigation {
     font-size: 18px;
-    font-style: bold;
+/*    font-style: bold;*/
     text-decoration: none;
     color: black;
-    opacity: 0.5;
+/*    opacity: 0.5;*/
 }
 
 .slidesjs-next{
@@ -78,7 +78,7 @@ body  {
 }
 
 .caption{
-    text-align: center;
+    text-align: left;
 }
 
 .arrow-text{
