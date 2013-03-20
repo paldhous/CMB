@@ -7,16 +7,16 @@
 // OTHER COPYRIGHT AND ATTRIBUTION STUFF GOES HERE, LIKE HEALPIX
 // SERIOUSLY, DON'T FORGET TO DO THIS!
 
+
+
 $(function(){
   $("#slides").slidesjs({
     width: 4000,
-    height: 3000,
+    height: Math.max(1500, window.innerHeight/window.innerWidth * 2500),
 	pagination: {
       active: false,
         // [boolean] Create pagination items.
         // You cannot use your own pagination. Sorry.
-      effect: "fade"
-        // [string] Can be either "slide" or "fade".
     },
 	navigation: {
       active: false,
@@ -78,7 +78,7 @@ $("document").ready(function(){
     
     $(".slide > p")   // Select the captions!
         .css("position", "relative")
-        .css("width", "98%")
+        .css("width", "96%")
         .css("margin-left", "auto")
         .css("margin-right", "auto")
         .css("position", "absolute")
