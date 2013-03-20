@@ -12,7 +12,7 @@ body  {
     padding: 0px;
     font-size: 16px;
     height: 100%;
-    overflow: hidden;
+/*    overflow: hidden;*/
 }
 
 #header {
@@ -83,5 +83,5 @@ body  {
 
 .arrow-text{
     font-size: 16px; 
-    vertical-align: 10px;
+    vertical-align: 2px;
 }

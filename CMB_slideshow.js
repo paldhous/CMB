@@ -9,8 +9,8 @@
 
 $(function(){
   $("#slides").slidesjs({
-    width: 4000,
-    height: 4000,
+    width: 40,
+    height: 20,
 	pagination: {
       active: false,
         // [boolean] Create pagination items.
