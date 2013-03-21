@@ -1,11 +1,6 @@
 // CMB_slideshow.js
-// Does what it says on the tin -- JavaScript code powering the CMB slideshow.
-// Last modified March 19th, 2013
 //
 // Copyright New Scientist, 2013.
-// All rights reserved. (???)
-// OTHER COPYRIGHT AND ATTRIBUTION STUFF GOES HERE, LIKE HEALPIX
-// SERIOUSLY, DON'T FORGET TO DO THIS!
 
 
 
