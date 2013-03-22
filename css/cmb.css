@@ -47,23 +47,18 @@ body  {
 #content {
     position: relative;
     top: 60px;
-/*    padding: 0px 50px;*/
     padding: 0px 3.5%;
 }
 
 /* Prevents slides from flashing */
 #slides {
   display:none;
-/*  margin:50px auto;*/
-/*  z-index:-1;*/
 }
 
 .slidesjs-navigation {
     font-size: 18px;
-/*    font-style: bold;*/
     text-decoration: none;
     color: black;
-/*    opacity: 0.5;*/
 }
 
 .slidesjs-next{
@@ -84,6 +79,11 @@ body  {
 
 .arrow-text{
     font-size: 14px;
-    font-style: none; 
     vertical-align: 2px;
+}
+
+#source{
+    position: relative;
+    font-size: 80%;
+    bottom: 10px;
 }
