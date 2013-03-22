@@ -10,7 +10,7 @@
 $(function(){
   $("#slides").slidesjs({
     width: 4000,
-    height: Math.max(1500, window.innerHeight/window.innerWidth * 2500),
+    height: Math.max(1500, window.innerHeight/window.innerWidth * 3000),
 	pagination: {
       active: false,
         // [boolean] Create pagination items.
@@ -58,6 +58,44 @@ $(function(){
 //////////////////////
 // Time for jQuery! //
 /////////////////////
+// 
+// function reSize(){
+//     
+//     // $target.css('width', $(window).width()+'px');
+//     
+//     $(".slide > img").css("width", "100%");
+//     $(".slide > p").css("width", "100%");
+//     
+//     // Finding the width of the window, not including the vertical scroll bar.
+//     var true_width = $('body').innerWidth();
+//     // Adjusting for the margins of the content div.
+//     true_width *= 0.93;
+//     
+//     // I can't figure out what's going on with the height of the image -- it seems to stay fixed at 21px for a while, then change.
+//     // I'm sure there's a good way to solve this with jQuery, but I don't have access to the jQuery API right now.
+//     // So I'm going to do something really ugly: 
+//     // I'm going to use the fact that all the images have a known width and identical aspect ratios
+//     // and just read their height off of their width that way.
+//     
+//     var aspect_ratio = 0.25; // all the images are 4 times wider than they are tall.
+//     var img_height = true_width * aspect_ratio;
+//     
+//     var caption_height = $(".caption:visible")
+//                                 .css("height");
+//     
+//     // Even more fudging -- adding an extra 50 pixels just to keep us safe.
+//     var slide_height = parseInt($(".slidesjs-navigation").css("height"), 10) + caption_height + img_height;
+//     slide_height += "px";
+//     
+//     $(".slidesjs-container").css("height", slide_height);
+//     
+//     
+// }
+// $(document).ready(function(){
+//     $(window).bind('resize', reSize($('#full')));
+//     $(window).trigger('resize');
+// });
+
 $("document").ready(function(){
     
     // A lot of this jQuery code is to handle a nasty and subtle glitch:
@@ -123,7 +161,7 @@ $("document").ready(function(){
     // 
     
     // Even more fudging -- adding an extra 50 pixels just to keep us safe.
-    var slide_height = parseInt($(".slidesjs-navigation").css("height"), 10) + parseInt($(".caption").css("height"), 10) + img_height + 50;
+    var slide_height = parseInt($(".slidesjs-navigation").css("height"), 10) + parseInt($(".caption").css("height"), 10) + img_height;
     slide_height += "px";
     
     
