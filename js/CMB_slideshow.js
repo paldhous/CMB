@@ -1,7 +1,4 @@
 // CMB_slideshow.js
-//
-// Copyright New Scientist, 2013.
-
 
 /////////////////////////////
 // First, set up SlidesJS. //
