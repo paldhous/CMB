@@ -84,6 +84,7 @@ body  {
 
 #source{
 /*    position: relative;*/
-    font-size: 90%;
+      font-size: 90%;
+      align: right;
 /*    bottom: 10px;*/
 }
